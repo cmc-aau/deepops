@@ -190,6 +190,29 @@
     chdir: "{{ slurm_build_dir }}"
   when: slurm_build
 
+- name: copy service files
+  copy:
+    src: "{{ slurm_build_dir }}/etc/{{ item }}"
+    dest: "/etc/systemd/system/{{ item }}"
+    remote_src: yes
+    mode: "0644"
+  with_items:
+    - slurmctld.service
+    - slurmdbd.service
+  when: is_controller
+  failed_when: false
+
+- name: copy service files
+  copy:
+    src: "{{ slurm_build_dir }}/etc/{{ item }}"
+    dest: "/etc/systemd/system/{{ item }}"
+    remote_src: yes
+    mode: "0644"
+  with_items:
+    - slurmd.service
+  when: is_compute
+  failed_when: false
+
 - name: install
   shell: "make -j$(nproc) install >> build.log 2>&1"
   args:
