@@ -1,0 +1,12 @@
+[Unit]
+Description=SLURM Exporter
+After=network.target
+
+[Service]
+ExecStart={{ slurm_exporter_bin }} -slurm.cli-fallback
+User=slurm
+Group=slurm
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

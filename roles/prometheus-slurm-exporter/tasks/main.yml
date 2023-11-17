@@ -43,9 +43,31 @@
     - slurm-dashboard.json
   notify: restart grafana
 
+- name: Set golang_version
+  set_fact:
+    golang_version: "{{ golang_version }}"
+
+- name: Install Go lang
+  include_role:
+    name: gantsign.golang
+
+- name: Clone slurm-exporter to /opt
+  git:
+    repo: "{{ slurm_exporter_repo }}"
+    dest: "{{ slurm_exporter_dir }}"
+    recursive: false
+    depth: 1
+    version: "{{ slurm_exporter_ver }}"
+
+- name: Build slurm-exporter
+  command:
+    cmd: "{{ golang_install_dir }}/bin/go build -o {{ slurm_exporter_bin }}"
+    chdir: "{{ slurm_exporter_dir }}"
+    creates: "{{ slurm_exporter_bin }}"
+
 - name: install systemd unit file
   template:
-    src: templates/docker.slurm-exporter.service.j2
+    src: templates/slurm-exporter.service.j2
     dest: "/etc/systemd/system/{{ slurm_exporter_svc_name }}"
     owner: root
     group: root

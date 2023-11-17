@@ -3,9 +3,15 @@ node_exporter_prom_dir: "/run/prometheus"
 node_exporter_svc_name: "docker.node-exporter.service"
 node_exporter_state: started
 node_exporter_enabled: yes
+node_exporter_host_group: "{{ node_exporter_host_group | default('slurm-cluster') }}"
 
 prometheus_config_dir: /etc/prometheus
 prometheus_cfg_endpoint_dir: "{{ prometheus_config_dir }}/endpoints"
 node_exporter_conf_template: "node-exporter.yml.j2"
 
 node_exporter_max_cpu: "0.5"
+
+grafana_svc_name: "docker.grafana.service"
+grafana_data_dir: /var/lib/grafana
+grafana_cfg_dashboard_path: "{{ grafana_data_dir }}/dashboards"
+grafana_user_id: 472
