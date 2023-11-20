@@ -2621,14 +2621,17 @@
   "refresh": "",
   "schemaVersion": 38,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "biocloud",
+    "slurm"
+  ],
   "templating": {
     "list": [
       {
         "current": {
           "selected": false,
-          "text": "biocloud-cpu",
-          "value": "biocloud-cpu"
+          "text": "genepural",
+          "value": "general"
         },
         "datasource": {
           "type": "prometheus",
@@ -2712,9 +2715,9 @@
     "to": "now"
   },
   "timepicker": {},
-  "timezone": "",
+  "timezone": "Europe/Copenhagen",
   "title": "Slurm overview",
   "uid": "-ZbSKTbVz",
   "version": 2,
-  "weekStart": ""
+  "weekStart": "monday"
 }

@@ -26,23 +26,6 @@
     owner: "{{ grafana_user_id }}"
     mode: "0755"
 
-- name: create dashboard dir
-  file:
-    path: "{{ grafana_cfg_dashboard_path }}"
-    state: directory
-    owner: "{{ grafana_user_id }}"
-    mode: "0755"
-
-- name: copy dashboards
-  copy:
-    src: "{{ item }}"
-    dest: "{{ grafana_cfg_dashboard_path }}"
-    owner: "{{ grafana_user_id }}"
-    mode: "0644"
-  with_items:
-    - slurm-dashboard.json
-  notify: restart grafana
-
 - name: Set golang_version
   set_fact:
     golang_version: "{{ golang_version }}"

@@ -6,7 +6,6 @@ golang_gopath: "/opt/go/packages"
 slurm_exporter_repo: https://github.com/rivosinc/prometheus-slurm-exporter.git
 slurm_exporter_ver: 3264648b54ba9e2c626da1277482517ff1202982
 slurm_exporter_dir: /opt/slurm-exporter
-slurm_exporter_just_target: prod
 slurm_exporter_host_group: "{{ slurm_monitoring_group | default('slurm-metric') }}"
 slurm_exporter_svc_name: "slurm-exporter.service"
 slurm_exporter_state: started

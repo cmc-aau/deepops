@@ -23687,7 +23687,7 @@
   "schemaVersion": 38,
   "style": "dark",
   "tags": [
-    "linux"
+    "biocloud"
   ],
   "templating": {
     "list": [
@@ -23813,9 +23813,9 @@
       "30d"
     ]
   },
-  "timezone": "browser",
+  "timezone": "Europe/Copenhagen",
   "title": "Node metrics",
   "uid": "rYdddlPWk",
   "version": 87,
-  "weekStart": ""
+  "weekStart": "monday"
 }
