@@ -116,7 +116,7 @@
           "refId": "C"
         }
       ],
-      "title": "Problem Nodes",
+      "title": "Compute node states",
       "type": "gauge"
     },
     {
