@@ -1,4 +1,5 @@
 slurm_install_pyxis: true
+slurm_force_install_pyxis: false
 slurm_install_prefix: /usr/local
 slurm_config_dir: /etc/slurm
 slurm_pyxis_version: 0.11.1
@@ -18,3 +19,4 @@ resize_run_partition: false
 
 # /run tmpfs size. ubuntu default is 10% of physical memory
 pyxis_run_tmpfs_size: 50%
+pyxis_spank_so: /usr/local/src/pyxis/spank_pyxis.so
