@@ -51,13 +51,10 @@
     pip:
       name: docker
 
-- name: Ensure metrics folder exists
-  file:
-    path: "{{ prometheus_metrics_dir }}"
-    state: directory
-    owner: root
-    group: root
-    mode: 0644
+- name: create a persistent docker volume for metrics
+  docker_volume:
+    name: "{{ prometheus_docker_volume_name }}"
+    state: "present"
 
 - name: install systemd unit file
   template:

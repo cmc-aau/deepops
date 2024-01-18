@@ -9,7 +9,7 @@ Restart=always
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
 ExecStartPre=/usr/bin/docker pull {{ prometheus_container }}
-ExecStart=/usr/bin/docker run --rm --network host --name %n -v {{ prometheus_config_dir }}:/etc/prometheus -v {{ prometheus_metrics_dir }}:/prometheus {{ prometheus_container }} --storage.tsdb.retention.time={{ prometheus_tsdb_retention_time }}
+ExecStart=/usr/bin/docker run --rm --network host --name %n -v {{ prometheus_config_dir }}:/etc/prometheus -v {{ prometheus_docker_volume_name }}:/prometheus {{ prometheus_container }} --storage.tsdb.retention.time={{ prometheus_tsdb_retention_time }} --config.file=/etc/prometheus/prometheus.yml --storage.tsdb.path=/prometheus --web.console.libraries=/usr/share/prometheus/console_libraries --web.console.templates=/usr/share/prometheus/consoles
 
 [Install]
 WantedBy=multi-user.target
